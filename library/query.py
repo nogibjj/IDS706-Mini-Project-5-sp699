@@ -2,8 +2,8 @@
 import sqlite3
 
 def create_CRUD(data):
-    dataset = "titanic_passengersDB"
-    table_name = "titanic"
+    dataset = "subsetDB"
+    table_name = "subset"
     
     conn = sqlite3.connect(dataset)
     cursor = conn.cursor()
@@ -17,8 +17,8 @@ def create_CRUD(data):
     conn.close()
 
 def read_CRUD():
-    dataset = "titanic_passengersDB"
-    table_name = "titanic"
+    dataset = "subsetDB"
+    table_name = "subset"
 
     conn = sqlite3.connect(dataset)
     cursor = conn.cursor()
@@ -33,27 +33,27 @@ def read_CRUD():
     return result
 
 def update_CRUD(record_id, column_name, new_value):
-    dataset = "titanic_passengersDB.db"
-    table_name = "titanic"
+    dataset = "subsetDB"
+    table_name = "subset"
 
     conn = sqlite3.connect(dataset)
     cursor = conn.cursor()
 
     # Create the table if it doesn't exist
-    cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (PassengerId INT, Survived INT, Pclass INT, Name TEXT, Sex TEXT, Age INT, SibSp INT, Parch INT, Ticket TEXT, Fare REAL, Cabin TEXT, Embarked TEXT)")
+    cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER, survived INTEGER, pclass INTEGER, sex TEXT, age TEXT)")
 
     # Create a dynamic SQL query to update the specified column for a record
-    query = f"UPDATE {table_name} SET {column_name}=? WHERE PassengerId=?"
+    query = f"UPDATE {table_name} SET {column_name}=? WHERE id=?"
     cursor.execute(query, (new_value, record_id))
 
     # Read the updated value from the database
-    cursor.execute(f"SELECT {column_name} FROM {table_name} WHERE PassengerId=?", (record_id,))
+    cursor.execute(f"SELECT {column_name} FROM {table_name} WHERE id=?", (record_id,))
     updated_value = cursor.fetchone()[0]
 
     conn.close()
 
     # Read the updated value from the database
-    cursor.execute(f"SELECT {column_name} FROM {table_name} WHERE PassengerId=?", (record_id,))
+    cursor.execute(f"SELECT {column_name} FROM {table_name} WHERE id=?", (record_id,))
     updated_row = cursor.fetchone()
     if updated_row is not None:
         updated_value = updated_row[0]
@@ -66,13 +66,13 @@ def update_CRUD(record_id, column_name, new_value):
         print(f"Record with PassengerId {record_id} does not exist.")
 
 def delete_CRUD(record_id):
-    dataset = "titanic_passengersDB"
-    table_name = "titanic"
+    dataset = "subsetDB"
+    table_name = "subset"
 
     conn = sqlite3.connect(dataset)
     cursor = conn.cursor()
 
-    query = f"DELETE FROM {table_name} WHERE PassengerId = ?"
+    query = f"DELETE FROM {table_name} WHERE id = ?"
     cursor.execute(query, (record_id,))
 
     conn.commit()

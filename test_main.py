@@ -14,12 +14,7 @@ def test_extract_file():
     assert result is not None
 
 def test_load_file():
-    test_csv_file = "test.csv"
-    with open(test_csv_file, "w", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["id", "survived", "pclass", "sex", "age"])
-        # 데이터 행
-        writer.writerow([13, 0, 3, "male", 32])
+    test_csv_file = "subtest.csv"
     
     # 테스트용 DB 파일 경로
     test_db_file = "test_subsetDB.db"
@@ -30,7 +25,7 @@ def test_load_file():
     # DB에서 데이터 확인
     conn = sqlite3.connect(test_db_file)
     cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM test_table")
+    cursor.execute("SELECT COUNT(*) FROM test_subset")
     count = cursor.fetchone()[0]
     conn.close()
     

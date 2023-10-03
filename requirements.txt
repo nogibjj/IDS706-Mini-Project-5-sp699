@@ -7,3 +7,6 @@ requests==2.26.0
 
 #rust based linter
 ruff==0.0.284
+
+#data science
+pandas==2.1.0

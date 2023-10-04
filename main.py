@@ -30,4 +30,4 @@ update_CRUD(13, "age", 18)
 
 
 # delete from CRUD
-delete_CRUD(13)
+delete_CRUD(1)

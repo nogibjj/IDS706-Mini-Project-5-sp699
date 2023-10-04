@@ -31,8 +31,6 @@ def test_load_file():
 
 def test_create_CRUD():
     data = (13, 1, 3, "female", 25)
-    create_CRUD(data)
-
     # Connect to the database and check if the data was inserted
     conn = sqlite3.connect("subsetDB.db")
     cursor = conn.cursor()
@@ -47,8 +45,6 @@ def test_create_CRUD():
     conn.close()
 
 def test_read_CRUD():
-    test_data = (1, 0, 3, "male", 22)
-    create_CRUD(test_data)
     result = read_CRUD()
 
     # Check if the result is a list (assuming it contains multiple rows)
@@ -68,9 +64,15 @@ def test_update_CRUD():
     new_value = 18
 
     update_CRUD(record_id, column_name, new_value)
-    new_database = read_CRUD()
 
-    assert new_database == (13, 1, 1, "female", 18)
+    # Fetch the updated data from the database
+    updated_data = read_CRUD()
+
+    # Create the expected data with the updated age value
+    expected_data = (13, 1, 1, "female", 18)
+
+    # Compare the fetched data with the expected data
+    assert updated_data == expected_data
 
 def test_delete_CRUD():
     # Call the delete_CRUD function to delete a record

@@ -13,20 +13,20 @@ def test_extract_file():
 def test_load_file():
     test_csv_file = "Data/subset.csv"
     
-    # 테스트용 DB 파일 경로
+    # DB file path for test
     test_db_file = "test_subsetDB.db"
     
-    # CSV 파일을 DB로 로드
+    # load the DB file from csv file
     load_file(test_csv_file, test_db_file, "test_subset")
     
-    # DB에서 데이터 확인
+    # see the data
     conn = sqlite3.connect(test_db_file)
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM test_subset")
     count = cursor.fetchone()[0]
     conn.close()
     
-    # 예상된 데이터 행 수와 실제 데이터 행 수 비교
+    # the number of columns that DB file has
     assert count == 12
 
 def test_create_CRUD():
@@ -34,7 +34,7 @@ def test_create_CRUD():
     create_CRUD(data)
 
     # Connect to the database and check if the data was inserted
-    conn = sqlite3.connect("test_subsetDB.db")
+    conn = sqlite3.connect("subsetDB.db")
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM test_subset WHERE id = 13")
     result = cursor.fetchone()
@@ -73,15 +73,12 @@ def test_update_CRUD():
     assert new_database == (13, 1, 1, "female", 18)
 
 def test_delete_CRUD():
-    # Insert test data
-    test_data = (13, 1, 1, "female", 18)
-
     # Call the delete_CRUD function to delete a record
     record_id = 13
     delete_CRUD(record_id)
 
     # Connect to the database and check if the record was deleted
-    conn = sqlite3.connect("test_subsetDB.db")
+    conn = sqlite3.connect("subsetDB.db")
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM titanic WHERE id = ?", (record_id,))
     result = cursor.fetchone()

@@ -93,7 +93,7 @@ def test_delete_CRUD():
     db_file = "subsetDB.db"  # Replace with the actual file path.
 
     # ID of the record to delete
-    record_id = 13  # ID of the record to delete (must match the ID in the actual database)
+    record_id = 13
 
     delete_CRUD(db_file, record_id)
 

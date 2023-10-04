@@ -34,15 +34,15 @@ def test_create_CRUD():
     create_CRUD(data)
 
     # Connect to the database and check if the data was inserted
-    conn = sqlite3.connect("test_subsetDB.db")
+    conn = sqlite3.connect("subsetDB.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM test_subset WHERE id = 13")
+    cursor.execute("SELECT * FROM ubset WHERE id = 13")
     result = cursor.fetchone()
 
     assert result == data
 
     # Clean up by deleting the inserted data
-    cursor.execute("DELETE FROM test_subset WHERE id = 13")
+    cursor.execute("DELETE FROM subset WHERE id = 13")
     conn.commit()
     conn.close()
 

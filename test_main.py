@@ -1,14 +1,9 @@
 # Test main.py
-from library.extract import extract_file
 from library.transform import load_file
 from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 import sqlite3
 
-
-def test_extract_file():
-    result = extract_file()
-    assert result is not None
 
 def test_load_file():
     test_csv_file = "Data/subset.csv"

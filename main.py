@@ -4,7 +4,7 @@ from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 db_file_path = "subsetDB.db"  # SQLite DB 파일 경로
 record_id = 12
-
+delete_id = 13
 
 # Load db file
 load_database()
@@ -25,5 +25,4 @@ update_CRUD("subsetDB.db", record_id, new_data)
 
 
 # delete from CRUD
-
-delete_CRUD(db_file_path, record_id)
+delete_CRUD(db_file_path, delete_id)

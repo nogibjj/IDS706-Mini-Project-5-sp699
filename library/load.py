@@ -11,7 +11,7 @@ def load_database():
 
     # Change the data type of the 'age' column to integer
     cursor.execute("PRAGMA foreign_keys = 0")  # Disable foreign keys
-    cursor.execute("ALTER TABLE subset RENAME TO subset_old")  # Rename the current table
+    cursor.execute("ALTER TABLE subset RENAME TO subset_old")
     cursor.execute("""
     CREATE TABLE subset (
         id INTEGER PRIMARY KEY,

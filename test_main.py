@@ -1,6 +1,6 @@
 # Test main.py
 from library.load import load_database
-from library.query import read_CRUD
+from library.query import read_CRUD, update_CRUD
 
 import sqlite3
 
@@ -66,17 +66,20 @@ def test_update_CRUD():
     for row in all_records:
         print(row)
 
-    cursor.execute("SELECT * FROM subset WHERE id = ?", (12,))
-    updated_result = cursor.fetchone()
-    conn.close()
+    new_data = (1, 2, "male", 35)  # 업데이트할 데이터 (survived, pclass, sex, age)
+    record_id = 12  # 업데이트할 레코드의 ID
+    update_CRUD(db_file, record_id, new_data)  # 함수 호출
 
-    # 업데이트된 데이터와 예상 데이터를 비교하여 assert 사용
-    expected_data = (1, 2, 'male', 35)  # 업데이트된 데이터 (survived, pclass, sex, age)
+    # 업데이트된 데이터를 다시 검색
+    cursor.execute("SELECT * FROM subset WHERE id = ?", (record_id,))
+    updated_result = cursor.fetchone()
 
     # 업데이트된 결과와 예상 결과를 출력
+    expected_data = (1, 2, 'male', 35)
     print("업데이트된 결과:", updated_result)
     print("예상 결과:", expected_data)
 
+    # 업데이트된 결과와 예상 결과를 비교하여 assert 사용
     assert updated_result == expected_data, "데이터 업데이트 확인 실패"
 
 '''

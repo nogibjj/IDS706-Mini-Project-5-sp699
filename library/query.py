@@ -50,31 +50,26 @@ def update_CRUD(record_id, column_name, new_value):
     conn = sqlite3.connect(dataset)
     cursor = conn.cursor()
 
-    # Create the table if it doesn't exist
-    cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER, survived INTEGER, pclass INTEGER, sex TEXT, age TEXT)")
+    try:
+        # Create the table if it doesn't exist
+        cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER, survived INTEGER, pclass INTEGER, sex TEXT, age TEXT)")
 
-    # Create a dynamic SQL query to update the specified column for a record
-    query = f"UPDATE {table_name} SET {column_name}=? WHERE id=?"
-    cursor.execute(query, (new_value, record_id))
+        # Create a dynamic SQL query to update the specified column for a record
+        query = f"UPDATE {table_name} SET {column_name}=? WHERE id=?"
+        cursor.execute(query, (new_value, record_id))
 
-    # Read the updated value from the database
-    cursor.execute(f"SELECT {column_name} FROM {table_name} WHERE id=?", (record_id,))
-    updated_value = cursor.fetchone()[0]
+        # Read the updated value from the database
+        cursor.execute(f"SELECT {column_name} FROM {table_name} WHERE id=?", (record_id,))
+        updated_value = cursor.fetchone()[0]
 
-    conn.close()
+        # Commit the changes to the database
+        conn.commit()
 
-    # Read the updated value from the database
-    cursor.execute(f"SELECT {column_name} FROM {table_name} WHERE id=?", (record_id,))
-    updated_row = cursor.fetchone()
-    if updated_row is not None:
-        updated_value = updated_row[0]
-        # Compare the updated value with the new_value
-        if updated_value == new_value:
-            print(f"The {column_name} was successfully updated to {updated_value}.")
-        else:
-            print(f"Failed to update {column_name}.")
-    else:
-        print(f"Record with PassengerId {record_id} does not exist.")
+        return updated_value
+    
+    finally:
+        conn.close()
+
 
 def delete_CRUD(record_id):
     dataset = "subsetDB"

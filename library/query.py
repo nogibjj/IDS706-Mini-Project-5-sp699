@@ -36,7 +36,7 @@ def update_CRUD(database, record_id, new_data):
     # 데이터베이스 연결
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
-    
+
     # 데이터 업데이트
     cursor.execute("UPDATE subset SET survived=?, pclass=?, sex=?, age=? WHERE id=?",
     (*new_data, record_id))
@@ -46,7 +46,7 @@ def update_CRUD(database, record_id, new_data):
 
     print("레코드가 성공적으로 업데이트되었습니다.")
 
-'''
+
 def delete_CRUD(database, record_id):
     # 데이터베이스 연결
     conn = sqlite3.connect(database)
@@ -59,4 +59,3 @@ def delete_CRUD(database, record_id):
     conn.close()
 
     print("레코드가 성공적으로 삭제되었습니다.")
-    '''

@@ -83,13 +83,13 @@ def test_update_CRUD():
     # 업데이트된 결과와 예상 결과를 비교하여 assert 사용
     assert updated_result == expected_data, "데이터 업데이트 확인 실패"
 
-'''
+
 def test_delete_CRUD():
     # 데이터베이스 파일 경로
     db_file = "subsetDB.db"  # 실제 파일 경로로 변경해야 합니다.
 
     # 삭제할 레코드의 ID
-    record_id = 13  # 삭제할 레코드의 ID (실제 데이터베이스 내 레코드 ID와 일치해야 함)
+    record_id = 12  # 삭제할 레코드의 ID (실제 데이터베이스 내 레코드 ID와 일치해야 함)
 
     # 레코드 삭제 후 데이터 조회하여 해당 레코드가 없는지 확인하는 assert 구문
     conn = sqlite3.connect(db_file)
@@ -100,11 +100,11 @@ def test_delete_CRUD():
     
     assert deleted_result is None, "데이터 삭제 실패"
 
-'''
+
 
 if __name__ == "__main__":
     test_load_database()
     test_create_CRUD()
     test_read_CRUD()
     test_update_CRUD()
-    # test_delete_CRUD()
+    test_delete_CRUD()

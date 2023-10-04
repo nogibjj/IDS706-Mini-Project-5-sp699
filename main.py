@@ -1,6 +1,6 @@
 # ETL-Query script
 from library.load import load_database
-from library.query import create_CRUD, read_CRUD, update_CRUD
+from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 db_file_path = "subsetDB.db"  # SQLite DB 파일 경로
 
@@ -22,7 +22,6 @@ read_CRUD(db_file_path)
 new_data = (1, 2, "male", 35)
 update_CRUD("subsetDB.db", 12, new_data)
 
-'''
+
 # delete from CRUD
-delete_CRUD(13)
-'''
+delete_CRUD(12)

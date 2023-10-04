@@ -92,7 +92,7 @@ def test_delete_CRUD():
     db_file = "subsetDB.db"  # 실제 파일 경로로 변경해야 합니다.
 
     # 삭제할 레코드의 ID
-    record_id = 12  # 삭제할 레코드의 ID (실제 데이터베이스 내 레코드 ID와 일치해야 함)
+    record_id = 13  # 삭제할 레코드의 ID (실제 데이터베이스 내 레코드 ID와 일치해야 함)
 
     delete_CRUD(db_file, record_id)
 

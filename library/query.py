@@ -85,12 +85,17 @@ def delete_CRUD(record_id):
     conn = sqlite3.connect(dataset)
     cursor = conn.cursor()
 
-    query = f"DELETE FROM {table_name} WHERE id = ?"
-    cursor.execute(query, (record_id,))
-
-    conn.commit()
-
-    cursor.close()
-    conn.close()
-
-    print(f"Record with ID {record_id} has been deleted.")
+    try:
+        query = f"DELETE FROM {table_name} WHERE id = ?"
+        cursor.execute(query, (record_id,))
+        conn.commit()
+        
+        if cursor.rowcount > 0:
+            print(f"Record with ID {record_id} has been deleted.")
+        else:
+            print(f"No record found with ID {record_id}. Nothing deleted.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        cursor.close()
+        conn.close()

@@ -65,6 +65,11 @@ def test_update_CRUD():
 
     # 업데이트된 데이터와 예상 데이터를 비교하여 assert 사용
     expected_data = (1, 2, 'male', 35)  # 업데이트된 데이터 (survived, pclass, sex, age)
+
+    # 업데이트된 결과와 예상 결과를 출력
+    print("업데이트된 결과:", updated_result)
+    print("예상 결과:", expected_data)
+    
     assert updated_result == expected_data, "데이터 업데이트 확인 실패"
 
 '''

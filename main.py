@@ -15,7 +15,7 @@ extract_file()
 load_file(csv_file_path, db_file_path, table_name)
 
 # Create from CRUD
-data = (14, 1, 3, "female", 25)
+data = (13, 1, 3, "female", 25)
 create_CRUD(data)
 
 # Read from CRUD

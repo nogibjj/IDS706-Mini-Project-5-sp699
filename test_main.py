@@ -1,5 +1,6 @@
 # Test main.py
 from library.load import load_database
+from library.query import read_CRUD
 
 import sqlite3
 
@@ -33,7 +34,7 @@ def test_create_CRUD():
         print("데이터를 확인할 수 없습니다.")
 
 
-'''
+
 def test_read_CRUD():
     # 데이터베이스 파일 경로
     database = "subsetDB.db"  # 실제 파일 경로로 변경해야 합니다.
@@ -50,7 +51,7 @@ def test_read_CRUD():
     else:
         print("데이터 조회 실패")
 
-
+'''
 def test_update_CRUD():
     # 데이터베이스 파일 경로
     db_file = "subsetDB.db"  # 실제 파일 경로로 변경해야 합니다.
@@ -88,6 +89,6 @@ def test_delete_CRUD():
 if __name__ == "__main__":
     test_load_database()
     test_create_CRUD()
-    # test_read_CRUD()
+    test_read_CRUD()
     # test_update_CRUD()
     # test_delete_CRUD()

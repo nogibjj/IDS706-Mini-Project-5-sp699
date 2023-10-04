@@ -14,15 +14,15 @@ def test_load_file():
     test_csv_file = "Data/subset.csv"
     
     # DB file path for test
-    test_db_file = "test_subsetDB.db"
+    test_db_file = "subsetDB.db"
     
     # load the DB file from csv file
-    load_file(test_csv_file, test_db_file, "test_subset")
+    load_file(test_csv_file, test_db_file, "subset")
     
     # see the data
     conn = sqlite3.connect(test_db_file)
     cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM test_subset")
+    cursor.execute("SELECT COUNT(*) FROM subset")
     count = cursor.fetchone()[0]
     conn.close()
     

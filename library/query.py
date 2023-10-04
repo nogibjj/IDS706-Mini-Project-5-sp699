@@ -15,7 +15,7 @@ def create_CRUD(database, data):
 
     cursor.execute("SELECT * FROM subset")
     all_records = cursor.fetchall()
-    print("Database content:")
+    print("Database content (create):")
     for record in all_records:
         print(record)
 
@@ -35,8 +35,13 @@ def read_CRUD(database):
         
     # Close the connection
     conn.close()
-    print("Records have been successfully retrieved.")
 
+    print("Database content (read):")
+    for record in results:
+        print(record)
+
+    print("Records have been successfully retrieved.")
+    
     return results
 
 
@@ -50,6 +55,13 @@ def update_CRUD(database, record_id, new_data):
     (*new_data, record_id))
 
     conn.commit()
+
+    cursor.execute("SELECT * FROM subset")
+    all_records = cursor.fetchall()
+    print("Database content (update):")
+    for record in all_records:
+        print(record)
+
     conn.close()
 
     print("Records have been successfully updated.")
@@ -64,6 +76,13 @@ def delete_CRUD(database, record_id):
     cursor.execute("DELETE FROM subset WHERE id=?", (record_id,))
 
     conn.commit()
+
+    cursor.execute("SELECT * FROM subset")
+    all_records = cursor.fetchall()
+    print("Database content (delete):")
+    for record in all_records:
+        print(record)
+
     conn.close()
 
     print("Records have been successfully deleted.")

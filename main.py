@@ -20,7 +20,7 @@ read_CRUD(db_file_path)
 
 # update from CRUD
 new_data = (1, 2, "male", 35)
-update_CRUD("subsetDB.db", 13, new_data)
+update_CRUD("subsetDB.db", 12, new_data)
 
 '''
 # delete from CRUD

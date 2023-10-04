@@ -66,7 +66,7 @@ def test_update_CRUD():
     for row in all_records:
         print(row)
 
-    cursor.execute("SELECT * FROM subset WHERE id = ?", (13,))
+    cursor.execute("SELECT * FROM subset WHERE id = ?", (12,))
     updated_result = cursor.fetchone()
     conn.close()
 

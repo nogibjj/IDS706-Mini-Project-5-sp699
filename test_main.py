@@ -1,12 +1,12 @@
 # Test main.py
-from library.load import load_file
+from library.load import load_database
 from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 import sqlite3
 
 
-def test_load_file():
-    data = load_file()
+def test_load_database():
+    data = load_database()
     if data:
         print("데이터베이스 불러오기 성공:")
         for row in data:
@@ -14,7 +14,7 @@ def test_load_file():
     else:
         print("데이터베이스 불러오기 실패")
 
-test_load_file()
+test_load_database()
 
 '''
 def test_create_CRUD():

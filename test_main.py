@@ -4,9 +4,6 @@ from library.transform import load_file
 from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 import sqlite3
-import csv
-import os
-import pandas as pd
 
 
 def test_extract_file():
@@ -14,7 +11,7 @@ def test_extract_file():
     assert result is not None
 
 def test_load_file():
-    test_csv_file = "subtest.csv"
+    test_csv_file = "Data/subtest.csv"
     
     # 테스트용 DB 파일 경로
     test_db_file = "test_subsetDB.db"
@@ -37,15 +34,15 @@ def test_create_CRUD():
     create_CRUD(data)
 
     # Connect to the database and check if the data was inserted
-    conn = sqlite3.connect("subsetDB")
+    conn = sqlite3.connect("test_subsetDB.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM titanic WHERE id = 13")
+    cursor.execute("SELECT * FROM test_subset WHERE id = 13")
     result = cursor.fetchone()
 
     assert result == data
 
     # Clean up by deleting the inserted data
-    cursor.execute("DELETE FROM titanic WHERE id = 13")
+    cursor.execute("DELETE FROM test_subset WHERE id = 13")
     conn.commit()
     conn.close()
 
@@ -84,7 +81,7 @@ def test_delete_CRUD():
     delete_CRUD(record_id)
 
     # Connect to the database and check if the record was deleted
-    conn = sqlite3.connect("subsetDB")
+    conn = sqlite3.connect("test_subsetDB.db")
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM titanic WHERE id = ?", (record_id,))
     result = cursor.fetchone()

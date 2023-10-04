@@ -10,10 +10,10 @@ load_database()
 
 
 # Create from CRUD
-data = (13, 1, 3, "female", "25")
+data = (13, 1, 3, "female", 25)
 create_CRUD("subsetDB.db", data)
 
-
+'''
 # Read from CRUD
 read_CRUD(db_file_path)
 
@@ -25,3 +25,4 @@ update_CRUD("subsetDB.db", 13, new_data)
 
 # delete from CRUD
 delete_CRUD(13)
+'''

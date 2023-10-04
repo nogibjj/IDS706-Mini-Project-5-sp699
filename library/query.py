@@ -14,7 +14,7 @@ def create_CRUD(database, data):
         
     print("레코드가 성공적으로 생성되었습니다.")
 
-
+'''
 def read_CRUD(database):
     # 데이터베이스 연결
     conn = sqlite3.connect(database)
@@ -54,3 +54,4 @@ def delete_CRUD(database, record_id):
     conn.close()
 
     print("레코드가 성공적으로 삭제되었습니다.")
+    '''

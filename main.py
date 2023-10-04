@@ -1,6 +1,6 @@
 # ETL-Query script
 from library.extract import extract_file
-from library.transform import load_file
+from library.load import load_file
 from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 csv_file_path = "Data/subset.csv"  # CSV 파일 경로

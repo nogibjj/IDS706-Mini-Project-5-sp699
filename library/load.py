@@ -1,6 +1,5 @@
 # Transform .csv file to .db (SQLite) file
 import sqlite3
-import csv
 
 
 # Load the .csv file and transform it for SQLite

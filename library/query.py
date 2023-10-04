@@ -18,7 +18,7 @@ def create_CRUD(data):
             raise ValueError("Pclass must be an integer")
         if not isinstance(data[3], str):
             raise ValueError("Sex must be a string")
-        if not isinstance(data[4], str):
+        if not isinstance(data[4], int):
             raise ValueError("Age must be a integer")
 
         cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER, survived INTEGER, pclass INTEGER, sex TEXT, age INTEGER)")

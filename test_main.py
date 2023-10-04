@@ -33,19 +33,19 @@ def test_load_file():
     assert count == 1
 
 def test_create_CRUD():
-    data = (14, 1, 3, "female", 25)
+    data = (13, 1, 3, "female", 25)
     create_CRUD(data)
 
     # Connect to the database and check if the data was inserted
     conn = sqlite3.connect("subsetDB")
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM titanic WHERE id = 14")
+    cursor.execute("SELECT * FROM titanic WHERE id = 13")
     result = cursor.fetchone()
 
     assert result == data
 
     # Clean up by deleting the inserted data
-    cursor.execute("DELETE FROM titanic WHERE id = 14")
+    cursor.execute("DELETE FROM titanic WHERE id = 13")
     conn.commit()
     conn.close()
 

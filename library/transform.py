@@ -4,9 +4,10 @@ import csv
 
 # Load the .csv file and transform it for SQLite
 def load_file(csv_file_path, db_file_path, table_name):
-    # SQLite DB 연결
-    conn = sqlite3.connect(db_file_path)
-    cursor = conn.cursor()
+    try:
+        # SQLite DB 연결
+        conn = sqlite3.connect(db_file_path)
+        cursor = conn.cursor()
     
     # create table (id, survived, pclass, sex, age)
     cursor.execute(f'''

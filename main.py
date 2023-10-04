@@ -1,6 +1,5 @@
 # ETL-Query script
-from library.extract import extract_file
-from library.load import load_file
+from library.load import load_database
 from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 csv_file_path = "Data/subset.csv"  # CSV 파일 경로
@@ -8,8 +7,8 @@ db_file_path = "subsetDB.db"  # SQLite DB 파일 경로
 table_name = "subset"  # 테이블 이름
 
 
-# Transform .csv file to .db file
-load_file(csv_file_path, db_file_path, table_name)
+# Load db file
+load_database()
 
 
 # Create from CRUD

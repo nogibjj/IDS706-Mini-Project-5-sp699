@@ -15,7 +15,7 @@ create_CRUD("subsetDB.db", data)
 
 
 # Read from CRUD
-read_CRUD()
+read_CRUD(db_file_path)
 
 
 # update from CRUD

@@ -13,6 +13,13 @@ def create_CRUD(database, data):
         )
     
     conn.commit()
+
+    cursor.execute("SELECT * FROM subset")
+    all_records = cursor.fetchall()
+    print("데이터베이스 내용:")
+    for record in all_records:
+        print(record)
+
     conn.close()
         
     print("레코드가 성공적으로 생성되었습니다.")

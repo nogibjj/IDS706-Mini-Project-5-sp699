@@ -13,10 +13,14 @@ extract_file()
 
 # Transform .csv file to .db file
 load_file(csv_file_path, db_file_path, table_name)
+print(load_file(csv_file_path, db_file_path, table_name))
+
 
 # Create from CRUD
 data = (13, 1, 3, "female", 25)
 create_CRUD(data)
+print(data)
+
 
 # Read from CRUD
 read_CRUD()
@@ -26,5 +30,8 @@ print(read_CRUD())
 # update from CRUD
 update_CRUD(13, "age", 18)
 
+
+
 # delete from CRUD
-delete_CRUD(13)
+delete_CRUD(14)
+print(delete_CRUD(14))

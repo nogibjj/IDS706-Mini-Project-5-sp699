@@ -88,6 +88,6 @@ def test_delete_CRUD():
 if __name__ == "__main__":
     test_load_database()
     test_create_CRUD()
-    test_read_CRUD()
-    test_update_CRUD()
-    test_delete_CRUD()
+    # test_read_CRUD()
+    # test_update_CRUD()
+    # test_delete_CRUD()

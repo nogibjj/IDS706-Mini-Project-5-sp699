@@ -7,7 +7,8 @@ def create_CRUD(database, data):
     cursor = conn.cursor()
         
     # 데이터베이스에 데이터 삽입
-    cursor.execute("INSERT INTO subset (id, survived, pclass, sex, age) VALUES (?, ?, ?, ?, ?)", data)
+    cursor.execute("INSERT INTO subset (id, survived, pclass, sex, age) VALUES (?, ?, ?, ?, ?)",
+                   data)
     
     conn.commit()
     conn.close()
@@ -35,7 +36,8 @@ def update_CRUD(database, record_id, new_data):
     cursor = conn.cursor()
 
     # 데이터 업데이트
-    cursor.execute("UPDATE subset SET survived=?, pclass=?, sex=?, age=? WHERE id=?", (*new_data, record_id))
+    cursor.execute("UPDATE subset SET survived=?, pclass=?, sex=?, age=? WHERE id=?",
+    (*new_data, record_id))
 
     conn.commit()
     conn.close()

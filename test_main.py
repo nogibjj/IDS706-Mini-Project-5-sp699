@@ -75,7 +75,7 @@ def test_update_CRUD():
     updated_result = cursor.fetchone()
 
     # 업데이트된 결과와 예상 결과를 출력
-    expected_data = (1, 2, 'male', 35)
+    expected_data = (record_id,) + new_data
     print("업데이트된 결과:", updated_result)
     print("예상 결과:", expected_data)
 

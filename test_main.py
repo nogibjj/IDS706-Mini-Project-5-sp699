@@ -1,6 +1,6 @@
 # Test main.py
 from library.load import load_database
-from library.query import read_CRUD, update_CRUD, delete_CRUD
+from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 import sqlite3
 
@@ -17,6 +17,9 @@ def test_load_database():
 
 def test_create_CRUD():
     data = (13, 1, 3, "female", 25)
+
+    create_CRUD("subsetDB.db", data)
+
     # 삽입한 데이터 확인 (선택사항)
     conn = sqlite3.connect("subsetDB.db")
     cursor = conn.cursor()

@@ -11,7 +11,7 @@ def test_extract_file():
     assert result is not None
 
 def test_load_file():
-    test_csv_file = "Data/subtest.csv"
+    test_csv_file = "Data/subset.csv"
     
     # 테스트용 DB 파일 경로
     test_db_file = "test_subsetDB.db"

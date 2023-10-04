@@ -34,9 +34,9 @@ def test_create_CRUD():
     create_CRUD(data)
 
     # Connect to the database and check if the data was inserted
-    conn = sqlite3.connect("subsetDB.db")
+    conn = sqlite3.connect("test_subsetDB.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM test_subset WHERE id = 13")
+    cursor.execute("SELECT * FROM subset WHERE id = 13")
     result = cursor.fetchone()
 
     assert result == data
@@ -64,7 +64,7 @@ def test_update_CRUD():
 
     # Call the update_CRUD function to update a specific column
     record_id = 13
-    column_name = "Age"
+    column_name = "age"
     new_value = 18
 
     update_CRUD(record_id, column_name, new_value)
@@ -78,9 +78,9 @@ def test_delete_CRUD():
     delete_CRUD(record_id)
 
     # Connect to the database and check if the record was deleted
-    conn = sqlite3.connect("subsetDB.db")
+    conn = sqlite3.connect("test_subsetDB.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM titanic WHERE id = ?", (record_id,))
+    cursor.execute("SELECT * FROM test_subset WHERE id = ?", (record_id,))
     result = cursor.fetchone()
 
     # Check if the result is None, indicating the record was deleted

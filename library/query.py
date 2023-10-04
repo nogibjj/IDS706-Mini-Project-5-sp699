@@ -21,7 +21,7 @@ def create_CRUD(database, data):
 
     conn.close()
         
-    print("Records have been successfully retrieved.")
+    print("Records have been successfully created.")
 
 
 def read_CRUD(database):
@@ -35,7 +35,7 @@ def read_CRUD(database):
         
     # Close the connection
     conn.close()
-    print("Records have been successfully read.")
+    print("Records have been successfully retrieved.")
 
     return results
 

@@ -27,7 +27,7 @@ def test_load_file():
     conn.close()
     
     # 예상된 데이터 행 수와 실제 데이터 행 수 비교
-    assert count == 1
+    assert count == 12
 
 def test_create_CRUD():
     data = (13, 1, 3, "female", 25)

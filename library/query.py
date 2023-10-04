@@ -8,13 +8,24 @@ def create_CRUD(data):
     conn = sqlite3.connect(dataset)
     cursor = conn.cursor()
 
-    cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id,survived,pclass,sex,age)")
+    try:
+        # 데이터 유효성 검사 (예: 데이터 타입)
+        # 이 부분에서 데이터가 유효하지 않으면 예외를 발생시킬 수 있습니다.
+        # 예: if not isinstance(data[0], int):
+        #     raise ValueError("ID must be an integer")
 
-    query = f"INSERT INTO {table_name} VALUES (? ,?, ?, ?, ?)"
-    cursor.execute(query, data)
+        cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER, survived INTEGER, pclass INTEGER, sex TEXT, age TEXT)")
 
-    conn.commit()
-    conn.close()
+        query = f"INSERT INTO {table_name} VALUES (?, ?, ?, ?, ?)"
+        cursor.execute(query, data)
+
+        conn.commit()
+    except Exception as e:
+        # 예외 처리: 데이터베이스 작업 중 문제가 발생하면 여기서 예외를 처리할 수 있습니다.
+        print(f"An error occurred: {e}")
+        conn.rollback()  # 롤백하여 이전 상태로 되돌릴 수도 있습니다.
+    finally:
+        conn.close()
 
 def read_CRUD():
     dataset = "subsetDB"

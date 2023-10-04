@@ -16,7 +16,7 @@ def test_load_database():
 
 
 def test_create_CRUD():
-    data = (13, 1, 3, "female", "25")
+    data = (13, 1, 3, "female", 25)
     # 삽입한 데이터 확인 (선택사항)
     conn = sqlite3.connect("subsetDB.db")
     cursor = conn.cursor()
@@ -62,6 +62,7 @@ def test_update_CRUD():
 
     cursor.execute("SELECT * FROM subset")
     all_records = cursor.fetchall()
+
     print("데이터베이스 내용:")
     for row in all_records:
         print(row)

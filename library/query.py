@@ -7,8 +7,10 @@ def create_CRUD(database, data):
     cursor = conn.cursor()
         
     # 데이터베이스에 데이터 삽입
-    cursor.execute("INSERT INTO subset (id, survived, pclass, sex, age) VALUES (?, ?, ?, ?, ?)",
-                   data)
+    cursor.execute(
+        "INSERT INTO subset (id, survived, pclass, sex, age) VALUES (?, ?, ?, ?, ?)", 
+        data
+        )
     
     conn.commit()
     conn.close()

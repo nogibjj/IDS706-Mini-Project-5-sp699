@@ -15,6 +15,8 @@ def test_load_file():
     
     # DB file path for test
     test_db_file = "subsetDB.db"
+
+    expected_record_count = 624
     
     # load the DB file from csv file
     load_file(test_csv_file, test_db_file, "subset")
@@ -27,7 +29,7 @@ def test_load_file():
     conn.close()
     
     # the number of columns that DB file has
-    assert count == 12
+    assert count == expected_record_count
 
 def test_create_CRUD():
     data = (13, 1, 3, "female", 25)

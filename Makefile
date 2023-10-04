@@ -9,6 +9,6 @@ format:
 	black *.py 
 
 lint:
-	ruff check library/*.py test_*.py *.py
+	pylint --disable=R,C --ignore-patterns=test_.*?py *.py library/*.py
 	
 all: install lint test format

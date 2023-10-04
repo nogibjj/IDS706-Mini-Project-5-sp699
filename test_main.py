@@ -1,6 +1,5 @@
 # Test main.py
 from library.load import load_database
-from library.query import read_CRUD
 
 import sqlite3
 

@@ -1,6 +1,6 @@
 # ETL-Query script
 from library.load import load_database
-from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
+from library.query import create_CRUD
 
 db_file_path = "subsetDB.db"  # SQLite DB 파일 경로
 

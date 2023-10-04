@@ -13,5 +13,3 @@ def load_database():
     conn.close()
         
     return results
-
-load_database()

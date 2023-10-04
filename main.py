@@ -13,7 +13,6 @@ extract_file()
 
 # Transform .csv file to .db file
 load_file(csv_file_path, db_file_path, table_name)
-print(load_file(csv_file_path, db_file_path, table_name))
 
 
 # Create from CRUD

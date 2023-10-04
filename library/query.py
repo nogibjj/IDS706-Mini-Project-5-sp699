@@ -9,12 +9,19 @@ def create_CRUD(data):
     cursor = conn.cursor()
 
     try:
-        # 데이터 유효성 검사 (예: 데이터 타입)
-        # 이 부분에서 데이터가 유효하지 않으면 예외를 발생시킬 수 있습니다.
-        # 예: if not isinstance(data[0], int):
-        #     raise ValueError("ID must be an integer")
+       # 데이터 유효성 검사 (예: 데이터 타입)
+        if not isinstance(data[0], int):
+            raise ValueError("ID must be an integer")
+        if not isinstance(data[1], int):
+            raise ValueError("Survived must be an integer")
+        if not isinstance(data[2], int):
+            raise ValueError("Pclass must be an integer")
+        if not isinstance(data[3], str):
+            raise ValueError("Sex must be a string")
+        if not isinstance(data[4], str):
+            raise ValueError("Age must be a integer")
 
-        cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER, survived INTEGER, pclass INTEGER, sex TEXT, age TEXT)")
+        cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER, survived INTEGER, pclass INTEGER, sex TEXT, age INTEGER)")
 
         query = f"INSERT INTO {table_name} VALUES (?, ?, ?, ?, ?)"
         cursor.execute(query, data)
@@ -52,7 +59,7 @@ def update_CRUD(record_id, column_name, new_value):
 
     try:
         # Create the table if it doesn't exist
-        cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER, survived INTEGER, pclass INTEGER, sex TEXT, age TEXT)")
+        cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER, survived INTEGER, pclass INTEGER, sex TEXT, age INTEGER)")
 
         # Create a dynamic SQL query to update the specified column for a record
         query = f"UPDATE {table_name} SET {column_name}=? WHERE id=?"

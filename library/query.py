@@ -31,7 +31,7 @@ def read_CRUD(database):
     conn.close()
     return results
 
-'''
+
 def update_CRUD(database, record_id, new_data):
     # 데이터베이스 연결
     conn = sqlite3.connect(database)
@@ -46,6 +46,7 @@ def update_CRUD(database, record_id, new_data):
 
     print("레코드가 성공적으로 업데이트되었습니다.")
 
+'''
 def delete_CRUD(database, record_id):
     # 데이터베이스 연결
     conn = sqlite3.connect(database)

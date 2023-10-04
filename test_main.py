@@ -51,7 +51,7 @@ def test_read_CRUD():
     else:
         print("데이터 조회 실패")
 
-'''
+
 def test_update_CRUD():
     # 데이터베이스 파일 경로
     db_file = "subsetDB.db"  # 실제 파일 경로로 변경해야 합니다.
@@ -67,7 +67,7 @@ def test_update_CRUD():
     expected_data = (1, 2, 'male', 35)  # 업데이트된 데이터 (survived, pclass, sex, age)
     assert updated_result == expected_data, "데이터 업데이트 확인 실패"
 
-
+'''
 def test_delete_CRUD():
     # 데이터베이스 파일 경로
     db_file = "subsetDB.db"  # 실제 파일 경로로 변경해야 합니다.
@@ -90,5 +90,5 @@ if __name__ == "__main__":
     test_load_database()
     test_create_CRUD()
     test_read_CRUD()
-    # test_update_CRUD()
+    test_update_CRUD()
     # test_delete_CRUD()

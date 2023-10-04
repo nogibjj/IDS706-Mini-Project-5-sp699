@@ -37,6 +37,7 @@ def update_CRUD(database, record_id, new_data):
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
 
+
     # 데이터 업데이트
     cursor.execute("UPDATE subset SET survived=?, pclass=?, sex=?, age=? WHERE id=?",
     (*new_data, record_id))

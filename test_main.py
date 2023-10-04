@@ -59,6 +59,13 @@ def test_update_CRUD():
     # 업데이트된 데이터 확인
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM subset")
+    all_records = cursor.fetchall()
+    print("데이터베이스 내용:")
+    for row in all_records:
+        print(row)
+
     cursor.execute("SELECT * FROM subset WHERE id = ?", (13,))
     updated_result = cursor.fetchone()
     conn.close()
@@ -69,7 +76,7 @@ def test_update_CRUD():
     # 업데이트된 결과와 예상 결과를 출력
     print("업데이트된 결과:", updated_result)
     print("예상 결과:", expected_data)
-    
+
     assert updated_result == expected_data, "데이터 업데이트 확인 실패"
 
 '''

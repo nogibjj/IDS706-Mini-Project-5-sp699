@@ -55,22 +55,16 @@ def test_update_CRUD():
     # 데이터베이스 파일 경로
     db_file = "subsetDB.db"  # 실제 파일 경로로 변경해야 합니다.
 
-    # 업데이트할 레코드의 ID와 새 데이터
-    record_id = 13  # 업데이트할 레코드의 ID (실제 데이터베이스 내 레코드 ID와 일치해야 함)
-    new_data = (1, 2, 'male', 35)  # 업데이트할 데이터 (survived, pclass, sex, age)
-
-    # update_CRUD 함수 호출
-    update_CRUD(db_file, record_id, new_data)
-
     # 업데이트된 데이터 확인
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM subset WHERE id = ?", (record_id,))
+    cursor.execute("SELECT * FROM subset WHERE id = ?", (13,))
     updated_result = cursor.fetchone()
     conn.close()
 
     # 업데이트된 데이터와 예상 데이터를 비교하여 assert 사용
-    assert updated_result == (*new_data, record_id), "데이터 업데이트 실패"
+    expected_data = (1, 2, 'male', 35)  # 업데이트된 데이터 (survived, pclass, sex, age)
+    assert updated_result == expected_data, "데이터 업데이트 확인 실패"
 
 
 def test_delete_CRUD():

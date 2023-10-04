@@ -1,6 +1,6 @@
 # Test main.py
 from library.load import load_database
-from library.query import read_CRUD, update_CRUD
+from library.query import read_CRUD, update_CRUD, delete_CRUD
 
 import sqlite3
 
@@ -90,6 +90,8 @@ def test_delete_CRUD():
 
     # 삭제할 레코드의 ID
     record_id = 12  # 삭제할 레코드의 ID (실제 데이터베이스 내 레코드 ID와 일치해야 함)
+
+    delete_CRUD(db_file, record_id)
 
     # 레코드 삭제 후 데이터 조회하여 해당 레코드가 없는지 확인하는 assert 구문
     conn = sqlite3.connect(db_file)

@@ -1,9 +1,9 @@
-# Transform .csv file to .db (SQLite) file
+# Transform .csv file to .db file
 import sqlite3
 import csv
 
 
-# load the csv file and insert into a new sqlite3 database
+# load the csv file and transform it to db file
 def load_database(dataset="Data/subset.csv", encoding="utf-8"):
     subset_data = csv.reader(open(dataset, newline="", encoding=encoding), delimiter=",")
     # skips the header of csv

@@ -1,8 +1,14 @@
 # Test main.py
+from library.extract import extract
 from library.transform import load_database
 from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 import sqlite3
+
+def test_extract():
+    result = extract(url="https://github.com/suim-park/Mini-Project-5/blob/main/Data/subset.csv", 
+            file_path="Data/subset.csv")
+    assert result is not None
 
 
 def test_load_database():

@@ -78,7 +78,7 @@ def test_update_CRUD():
         print(row)
 
     new_data = (1, 1, "female", 40)  # Data to update (survived, pclass, sex, age)
-    record_id = 12  # ID of the record to update
+    record_id = 13  # ID of the record to update
     update_CRUD(db_file, record_id, new_data)  # Function call
 
     # Retrieve the updated data

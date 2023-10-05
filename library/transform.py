@@ -28,7 +28,7 @@ def load_database(dataset="Data/subset.csv"):
         INSERT INTO subset (
             id,
             survived,
-            pclass
+            pclass,
             sex,
             age
             ) 

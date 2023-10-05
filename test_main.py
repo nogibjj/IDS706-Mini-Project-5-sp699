@@ -114,6 +114,7 @@ def test_delete_CRUD():
 
 
 if __name__ == "__main__":
+    test_extract()
     test_load_database()
     test_create_CRUD()
     test_read_CRUD()

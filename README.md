@@ -25,7 +25,7 @@
 ## :ballot_box_with_check: In progress
 __`Step 1`__ : Set up the environment to install multiple Python versions in GitHub Actions.
 - `requirements.txt`: Add `pandas`(version=2.1.0).</br>
-<img src="https://github.com/nogibjj/IDS706-Mini-Project-5-sp699/assets/143478016/b480bc45-aa87-46d5-bf10-441bf508bfc3.png" width="190" height="210"/></br>
+<img src="https://github.com/suim-park/Mini-Project-5/assets/143478016/6e8d500a-fa80-4430-a018-38f1827cf5f0.png" width="160" height="200"/></br>
 - `main.yml`: Build the multiple Python versions in __main.yml__ file.  </br>
 <img src="https://github.com/nogibjj/IDS706-Mini-Project-5-sp699/assets/143478016/8c62477c-5acc-4c94-873d-414da92313d2.png" width="350" height="620"/></br>
 - `Makefile`: Include the functions for install, test, lint, and format to automate the build. </br>
@@ -34,43 +34,60 @@ __`Step 1`__ : Set up the environment to install multiple Python versions in Git
 - `devcontainer.json`: Define and set up a development environment.
 
 __`Step 2`__ : Add SQL CRUD operations to the __libarary/query.py__ file. Utilize the libarary/load.py file to load the database in this case.</br>
-* `lib/load.py`</br>
+* `library/extract.py`</br>
 ```Python
+# Extract csv file through link
+import requests
+
+def extract(url="https://github.com/suim-park/Mini-Project-5/blob/main/Data/subset.csv", 
+            file_path="Data/subset.csv"):
+    with requests.get(url, timeout=10) as r:
+        with open(file_path, 'wb') as f:
+            f.write(r.content)
+    return file_path
+```
+* `library/transform.py`</br>
+```Python
+# Transform .csv file to .db file
 import sqlite3
+import csv
 
-# Load the .csv file and transform it for SQLite
-def load_database():
+
+# load the csv file and transform it to db file
+def load_database(dataset="Data/subset.csv", encoding="utf-8"):
+    subset_data = csv.reader(open(dataset, newline="", encoding=encoding), delimiter=",")
+    # skips the header of csv
+    next(subset_data)
     conn = sqlite3.connect("subsetDB.db")
-
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM subset")
-    results = cursor.fetchall()
-
-    # Change the data type of the 'age' column to integer
-    cursor.execute("PRAGMA foreign_keys = 0")  # Disable foreign keys
-    cursor.execute("ALTER TABLE subset RENAME TO subset_old")  # Rename the current table
-    cursor.execute("""
-    CREATE TABLE subset (
-        id INTEGER PRIMARY KEY,
-        survived INTEGER,
-        pclass INTEGER,
-        sex TEXT,
-        age INTEGER
+    c = conn.cursor()
+    c.execute("DROP TABLE IF EXISTS subset")
+    c.execute(
+        """
+        CREATE TABLE subset (
+            id INTEGER,
+            survived INTEGER,
+            pclass INTEGER,
+            sex TEXT,
+            AGE INTEGER
         )
-    """)
-    # Copy the data
-    cursor.execute("""
-        INSERT INTO subset (id, survived, pclass, sex, age)
-        SELECT id, survived, pclass, sex, CAST(age AS INTEGER) FROM subset_old
-    """)
-
-    cursor.execute("DROP TABLE subset_old")  # Delete the old table
-    cursor.execute("PRAGMA foreign_keys = 1")  # Re-enable foreign keys
-
+    """
+    )
+    # insert
+    c.executemany(
+        """
+        INSERT INTO subset (
+            id,
+            survived,
+            pclass,
+            sex,
+            age
+            ) 
+            VALUES (?, ?, ?, ?, ?)""",
+        subset_data,
+    )
     conn.commit()
     conn.close()
-
-    return results
+    return "subsetDB.db"
 ```
 * `libarart/query.py`</br>
 ```Python
@@ -163,16 +180,19 @@ def delete_CRUD(database, record_id):
 * `main.py`</br>
 ```Python
 # ETL-Query script
-from library.load import load_database
+from library.extract import extract
+from library.transform import load_database
 from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 db_file_path = "subsetDB.db"  # SQLite DB file path
-record_id = 12
+record_id = 13
 delete_id = 13
 data = (13, 1, 3, "female", 25)
-new_data = (1, 1, "female", 58)
+new_data = (1, 1, "female", 40)
 
 if __name__ == "__main__":
+    extract(url="https://github.com/suim-park/Mini-Project-5/blob/main/Data/subset.csv", 
+            file_path="Data/subset.csv")
     load_database()
     create_CRUD("subsetDB.db", data)
     read_CRUD(db_file_path)
@@ -182,11 +202,16 @@ if __name__ == "__main__":
 * `test_main.py`</br>
 ```Python
 # Test main.py
-from library.load import load_database
+from library.extract import extract
+from library.transform import load_database
 from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 import sqlite3
 
+def test_extract():
+    result = extract(url="https://github.com/suim-park/Mini-Project-5/blob/main/Data/subset.csv", 
+            file_path="Data/subset.csv")
+    assert result is not None
 
 def test_load_database():
     data = load_database()
@@ -196,7 +221,6 @@ def test_load_database():
             print(row)
     else:
         print("Failed to load the database")
-
 
 def test_create_CRUD():
     data = (13, 1, 3, "female", 25)
@@ -252,8 +276,8 @@ def test_update_CRUD():
     for row in all_records:
         print(row)
 
-    new_data = (1, 1, "female", 58)  # Data to update (survived, pclass, sex, age)
-    record_id = 12  # ID of the record to update
+    new_data = (1, 1, "female", 40)  # Data to update (survived, pclass, sex, age)
+    record_id = 13  # ID of the record to update
     update_CRUD(db_file, record_id, new_data)  # Function call
 
     # Retrieve the updated data
@@ -287,6 +311,7 @@ def test_delete_CRUD():
     assert deleted_result is None, "Data deletion failed"
 
 if __name__ == "__main__":
+    test_extract()
     test_load_database()
     test_create_CRUD()
     test_read_CRUD()

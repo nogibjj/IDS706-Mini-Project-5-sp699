@@ -1,5 +1,5 @@
 # Test main.py
-from library.load import load_database
+from library.transform import load_database
 from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 
 import sqlite3

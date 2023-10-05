@@ -320,7 +320,7 @@ if __name__ == "__main__":
 ```
 __`Step 3`__ : Verify if SQL runs correctly.
 * __Test__ </br>
-![image](https://github.com/nogibjj/IDS706-Mini-Project-5-sp699/assets/143478016/261a988d-a2fc-4ee7-8543-d01f5096c23a)</br>
+![image](https://github.com/suim-park/Mini-Project-5/assets/143478016/d968e3d1-2519-450d-9449-d46e1493ef38)</br>
 * __Lint__ </br>
 <img src="https://github.com/nogibjj/IDS706-Mini-Project-5-sp699/assets/143478016/55ab2d8f-f095-491b-8851-3cb9839cf5b2.png" width="580" height="90"/></br>
 * __Format__ </br>
@@ -329,5 +329,4 @@ __`Step 3`__ : Verify if SQL runs correctly.
 __`Step 4`__ : Check whether GitHub Action has different multiple Python versions.</br>
 * __SQL__ </br>
 :exclamation: __`update CRUD`__: Since the tests are happening __simultaneously__, the results may appear to have no changes in the data values. However, the update_CRUD() function is functioning correctly.</br>
-<img src="https://github.com/nogibjj/IDS706-Mini-Project-5-sp699/assets/143478016/a76699b0-9a15-4542-be98-651a2b4dd9ed.png" width="250" height="500"/></br>
-<img src="https://github.com/nogibjj/IDS706-Mini-Project-5-sp699/assets/143478016/8d95eaf7-46ca-44af-9bcb-39222fe3be73.png" width="250" height="500"/></br>
+![image](https://github.com/suim-park/Mini-Project-5/assets/143478016/f1ccff03-bde7-4d01-ba6c-8a9a363b9faf)

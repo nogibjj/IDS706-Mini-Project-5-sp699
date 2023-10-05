@@ -4,8 +4,8 @@ import csv
 
 
 # load the csv file and insert into a new sqlite3 database
-def load_database(dataset="Data/subset.csv"):
-    subset_data = csv.reader(open(dataset, newline=""), delimiter=",")
+def load_database(dataset="Data/subset.csv", encoding="utf-8"):
+    subset_data = csv.reader(open(dataset, newline="", encoding=encoding), delimiter=",")
     # skips the header of csv
     next(subset_data)
     conn = sqlite3.connect("subsetDB.db")

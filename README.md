@@ -39,7 +39,7 @@ __`Step 2`__ : Add SQL CRUD operations to the __libarary/query.py__ file. Utiliz
 # Extract csv file through link
 import requests
 
-def extract(url="https://github.com/suim-park/Mini-Project-5/blob/main/Data/subset.csv", 
+def extract(url="https://github.com/suim-park/Mini-Project-5/raw/main/Data/subset.csv", 
             file_path="Data/subset.csv"):
     with requests.get(url, timeout=10) as r:
         with open(file_path, 'wb') as f:
@@ -191,7 +191,7 @@ data = (13, 1, 3, "female", 25)
 new_data = (1, 1, "female", 40)
 
 if __name__ == "__main__":
-    extract(url="https://github.com/suim-park/Mini-Project-5/blob/main/Data/subset.csv", 
+    extract(url="https://github.com/suim-park/Mini-Project-5/raw/main/Data/subset.csv", 
             file_path="Data/subset.csv")
     load_database()
     create_CRUD("subsetDB.db", data)
@@ -209,7 +209,7 @@ from library.query import create_CRUD, read_CRUD, update_CRUD, delete_CRUD
 import sqlite3
 
 def test_extract():
-    result = extract(url="https://github.com/suim-park/Mini-Project-5/blob/main/Data/subset.csv", 
+    result = extract(url="https://github.com/suim-park/Mini-Project-5/raw/main/Data/subset.csv", 
             file_path="Data/subset.csv")
     assert result is not None
 

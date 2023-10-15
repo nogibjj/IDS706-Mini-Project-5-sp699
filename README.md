@@ -33,7 +33,7 @@ __`Step 1`__ : Set up the environment to install multiple Python versions in Git
 - `Dockerfile`: Create a Dockerfile that builds an image to create a container in Codespace.</br>
 - `devcontainer.json`: Define and set up a development environment.
 
-__`Step 2`__ : Add SQL CRUD operations to the __libarary/query.py__ file. Utilize the libarary/load.py file to load the database in this case.</br>
+__`Step 2`__ : Add SQL CRUD operations to the __libarary/query.py__ file. Extract the CSV file and then transform the database file.</br>
 * `library/extract.py`</br>
 ```Python
 # Extract csv file through link

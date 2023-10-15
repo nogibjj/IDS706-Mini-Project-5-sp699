@@ -26,7 +26,7 @@
 __`Step 1`__ : Set up the environment to install multiple Python versions in GitHub Actions.
 - `requirements.txt`: Add `pandas`(version=2.1.0).</br>
 <img src="https://github.com/suim-park/Mini-Project-5/assets/143478016/6e8d500a-fa80-4430-a018-38f1827cf5f0.png" width="160" height="200"/></br>
-- `main.yml`: Build the multiple Python versions in __main.yml__ file.  </br>
+- `main.yml`: Set up the environment for the SQL database in the __main.yml__ file.  </br>
 <img src="https://github.com/nogibjj/IDS706-Mini-Project-5-sp699/assets/143478016/8c62477c-5acc-4c94-873d-414da92313d2.png" width="350" height="620"/></br>
 - `Makefile`: Include the functions for install, test, lint, and format to automate the build. </br>
 <img src="https://github.com/nogibjj/IDS706-Mini-Project-5-sp699/assets/143478016/57b59ef1-1a4b-447a-838e-d3e795980e86.png" width="430" height="230"/></br>
